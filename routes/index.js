@@ -34,19 +34,19 @@ router.post('/invite', function(req, res) {
           if (body.ok) {
             res.render('result', {
               community: config.community,
-              message: 'Success! Check &ldquo;'+ req.body.email +'&rdquo; for an invite from Slack.'
+              message: 'Hemos enviado la invitación a '+ req.body.email +'.'
             });
           } else {
             let error = body.error;
-            if (error === 'already_invited' || error === 'already_in_team') {
+            if (error === 'already_invited' || error === 'already_in_team' || error === 'already_in_team_invited_user') {
               res.render('result', {
                 community: config.community,
-                message: 'Success! You were already invited.<br>' +
-                        'Visit <a href="https://'+ config.slackUrl +'">'+ config.community +'</a>'
+                message: 'Ya habías sido invitado a este slack.<br>' +
+                        'Visita <a href="https://'+ config.slackUrl +'">https://'+ config.slackUrl +'</a>'
               });
               return;
             } else if (error === 'invalid_email') {
-              error = 'The email you entered is an invalid email.';
+              error = 'Ingresaste un correo inválido.';
             } else if (error === 'invalid_auth') {
               error = 'Something has gone wrong. Please contact a system administrator.';
             }

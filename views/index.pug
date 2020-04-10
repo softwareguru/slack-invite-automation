@@ -5,23 +5,27 @@ html
     meta(name="viewport", content="width=device-width, initial-scale=1")
     title #{__('TITLE', community)}
     link(href="css/style.css", rel="stylesheet", type="text/css")
-    link(href="//fonts.googleapis.com/css?family=Lato:300,400,700,900,700italic|Open+Sans:700italic,400,600,300,700,800", rel="stylesheet", type="text/css")
+    link(href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap", rel="stylesheet")
   body
-    #wrapper
+    .container
       .main
-        .header
-          h1
-            strong #{community}
-          h2 #{__('HEADER', community)}
-        .content
-          .information
-            form(method="POST", action="invite")#join-form.form
-              input(type="email", name="email", autofocus, placeholder=__('ENTER_EMAIL'))#slack-email.field
-              if tokenRequired
-                input(type="text", name="token", placeholder=__('ENTER_TOKEN'))#slack-token.field
-              input(type="submit", value="Join").submit
-              if !!recaptchaSiteKey
-                div(class="g-recaptcha", data-sitekey=recaptchaSiteKey)
+        .header 
+          h2 #{__('TITLE', community)}
+          p #{__('HEADER', community)}
+        form(method="POST", action="invite")#join-form.form
+          .email 
+            input(type="email", name="email", autofocus, placeholder=__('ENTER_EMAIL'))#slack-email.field
+          if tokenRequired
+            input(type="text", name="token", placeholder=__('ENTER_TOKEN'))#slack-token.field
+          .coc
+            input(type="checkbox", name="coc", required)#coc-checkbox 
+            span#coc-text 
+              | Acepto el 
+              | <a href="https://sg.com.mx">Código de conducta</a>.
+          .submit 
+            input(type="submit", value="Solicita tu invitación")#submit-button
+          if !!recaptchaSiteKey
+            div(class="g-recaptcha", data-sitekey=recaptchaSiteKey)
     if !!recaptchaSiteKey
        script(src='https://www.google.com/recaptcha/api.js')
     script.
