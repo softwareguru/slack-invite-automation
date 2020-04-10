@@ -19,9 +19,9 @@ html
             input(type="text", name="token", placeholder=__('ENTER_TOKEN'))#slack-token.field
           .coc
             input(type="checkbox", name="coc", required)#coc-checkbox 
-            span#coc-text 
+            label 
               | Acepto el 
-              | <a href="https://sg.com.mx">Código de conducta</a>.
+              | <a href="https://sg.com.mx/sgvirtual/coc/">Código de conducta</a>.
           .submit 
             input(type="submit", value="Solicita tu invitación")#submit-button
           if !!recaptchaSiteKey
