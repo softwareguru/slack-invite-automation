@@ -42,7 +42,7 @@ router.post('/invite', function(req, res) {
               res.render('result', {
                 community: config.community,
                 message: 'Ya habías sido invitado a este slack.<br>' +
-                        'Visita <a href="https://'+ config.slackUrl +'">https://'+ config.slackUrl +'</a>'
+                        'Visita <a href="https://'+ config.slackUrl +'" target="_blank">https://'+ config.slackUrl +'</a>'
               });
               return;
             } else if (error === 'invalid_email') {
